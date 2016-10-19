@@ -4,6 +4,10 @@
 from linked_list import Node, LinkedList
 import pytest
 
+TYPES_OF_INPUTS = [
+    'a', 1, 1.0, (1, 2), [1, 2], True, None, 'āĕĳœ', b'1', '\t'
+]
+
 
 # ------------------Node Initialization Tests--------------------
 def test_node_init_value_null():
@@ -384,7 +388,7 @@ def test_remove_not_found_length_update():
 
 
 # -------------Linked List Traverse Tests------------------
-#  traverse(node) - will traverse through the list 
+#  traverse(node) - will traverse through the list.
 # [x] traverse through a list.
 # [x] traverse through a list with a given start node.
 # [x] traverse through a list with given stop node.
@@ -437,7 +441,6 @@ def test_traverse_start_and_end_nodes_same():
 def test_traverse_end_node_before_start():
     """Traverse through a list."""
     linked = LinkedList('abcdef')
-    list_items = []
     dnode = linked.search('d')
     anode = linked.search('a')
     with pytest.raises(IndexError):
