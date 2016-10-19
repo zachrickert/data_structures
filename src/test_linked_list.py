@@ -5,7 +5,7 @@ from linked_list import Node, LinkedList
 import pytest
 
 TYPES_OF_INPUTS = [
-    'a', 1, 1.0, (1, 2), [1, 2], True, None, 'āĕĳœ', b'1', '\t'
+    'a', 1, 1.0, 1/3, (1, 2), [1, 2], True, None, 'āĕĳœ', b'1', '\t'
 ]
 
 
@@ -53,6 +53,14 @@ def test_node1_eq_node2():
     node1 = Node(1)
     node2 = Node(1)
     assert node1 == node2
+
+
+# --------------------Node Value Check-----------------------
+def test_value_in_equals_value_out():
+    """Test to see if node can handle the different types of data inputs."""
+    for data in TYPES_OF_INPUTS:
+        node = Node(data)
+        assert node.value == data
 
 
 # --------------------Node Push Method-----------------------
