@@ -10,6 +10,11 @@ TYPES_OF_INPUTS = [
 
 
 # ------------------Node Initialization Tests--------------------
+# [x] test default initialization of a node is None value.
+# [x] test initialization of a Node with a value.
+# [x] test default initialization of a node results in no pointer.
+# [x] test initialization of a node results with pointer.
+
 def test_node_init_value_null():
     """Test default initialization of a node is None value."""
     node = Node()
@@ -36,6 +41,11 @@ def test_node_init_next_with_pointer():
 
 
 # --------------------Node Equality Tests-----------------------
+# [x] test if a node will equal its value.
+# [x] test if a value will equal a Node.
+# [x] test if a two nodes with same value equal each other.
+# [x] two nodes do not evaluate to each other using is key word.
+
 def test_node_eq_value():
     """Test if a node will equal its value."""
     node = Node(1)
@@ -55,6 +65,13 @@ def test_node1_eq_node2():
     assert node1 == node2
 
 
+def test_node1_is_not_node2():
+    """Two nodes do not evaluate to each other using is"""
+    node1 = Node(1)
+    node2 = Node(1)
+    assert node1 is not node2
+
+
 # --------------------Node Value Check-----------------------
 def test_value_in_equals_value_out():
     """Test to see if node can handle the different types of data inputs."""
@@ -64,15 +81,18 @@ def test_value_in_equals_value_out():
 
 
 # --------------------Node Push Method-----------------------
+# [x] push value, check new node has correct value.
+# [x] push value, check new node has correct pointer.
+
 def test_node_push_check_value():
-    """Test push method returns correct value."""
+    """Push value, check new node has correct value."""
     node1 = Node(1)
     node2 = node1._push(2)
     assert node2 == 2
 
 
 def test_node_push_check_pointer():
-    """Test push method returns correct value."""
+    """Push value, check new node has correct pointer"""
     node1 = Node(1)
     node2 = node1._push(2)
     assert node2.pointer is node1
@@ -90,12 +110,40 @@ def test_linked_list_init_size():
     linked = LinkedList()
     assert(linked.length is 0)
 
+
+# -------------Linked List Push Tests------------------
+# push(val) - will insert the value ‘val’ at the head of the list.
+# [x] push, check head node value
+# [x] push, check head node pointer is None
+# [x] push, push, check head node pointer.
+
+def test_push_head_value():
+    """push, check head node value."""
+    linked = LinkedList()
+    linked.push(1)
+    assert (linked.head.value is 1)
+
+
+def test_push_head_pointer_is_none():
+    """Push, check head node pointer."""
+    linked = LinkedList()
+    linked.push(1)
+    assert (linked.head.pointer is None)
+
+
+def test_push_head_pointer_points_to_next():
+    """Push, push, check head node pointer."""
+    linked = LinkedList()
+    linked.push(1)
+    linked.push(2)
+    assert (linked.head.pointer == 1)
+
+
 # -------------Linked List Length Tests------------------
 # [x] len of new list is 0.
 # [x] push, len of list in 1.
 # [x] push, pop, len of list in 0.
 # [x] pop, len of list in 0.
-
 
 def test_len_empty_linked_list():
     """Test if len of a new string is 0."""
@@ -124,34 +172,6 @@ def test_len_is_0_after_index_error():
     with pytest.raises(IndexError):
         linked.pop()
     assert(len(linked) is 0)
-
-
-# -------------Linked List Push Tests------------------
-# push(val) - will insert the value ‘val’ at the head of the list.
-# [x] push, check head node value
-# [x] push, check head node pointer is None
-# [x] push, push, check head node pointer.
-
-def test_push_head_value():
-    """push, check head node value."""
-    linked = LinkedList()
-    linked.push(1)
-    assert (linked.head.value is 1)
-
-
-def test_push_head_pointer_is_none():
-    """push, check head node pointer."""
-    linked = LinkedList()
-    linked.push(1)
-    assert (linked.head.pointer is None)
-
-
-def test_push_head_pointer_points_to_next():
-    """push, push, check head node pointer."""
-    linked = LinkedList()
-    linked.push(1)
-    linked.push(2)
-    assert (linked.head.pointer == 1)
 
 
 # -------Linked List Initialization Tests by itterable------------
@@ -207,6 +227,7 @@ def test_initialization_with_non_itterable():
 
 # -------------Linked List Pop Tests------------------
 # [x] push(val), pop - will return val.
+# [x] push(val), pop - head will be None.
 # [x] pop - returns IndexError
 # [x] push, pop, pop returns IndexError
 
@@ -215,6 +236,14 @@ def test_pop_returns_value():
     linked = LinkedList()
     linked.push(1)
     assert(linked.pop() is 1)
+
+
+def test_pop_rests_head_value():
+    """push(val), pop - head will be None."""
+    linked = LinkedList()
+    linked.push(1)
+    linked.pop()
+    assert(linked.head is None)
 
 
 def test_pop_raises_index_error():
@@ -299,19 +328,19 @@ def test_search_one_node_list():
 
 
 def test_search_multi_node_list():
-    """Search list with one node, returns a node."""
+    """Search list with multiple nodes returns node."""
     linked = LinkedList('abcdef')
     node = linked.search('c')
     assert node.value is 'c'
 
 
 def test_search_multi_node_list_returns_none():
-    """Search list with one node, returns a node."""
+    """Search list with multiple nodes, return none."""
     linked = LinkedList('abcdef')
     assert linked.search('g') is None
 
 
-# -------------Linked List Search Tests------------------
+# -------------Linked List Remove Tests------------------
 #  remove(val) - will remove the given node from the list,
 # wherever it might be (node must be an item in the list).
 # [x] remove a single node from a list.
@@ -359,8 +388,8 @@ def test_remove_only_node_in_list():
 def test_remove_node_not_in_list():
     """Remove a node not in the list."""
     linked = LinkedList('abcdef')
-    linked.remove('k')
-    assert len(linked) == 6
+    with pytest.raises(ValueError):
+        linked.remove('k')
 
 
 def test_remove_node_length_update():
@@ -391,7 +420,8 @@ def test_remove_not_found_length_update():
     """remove, not found, size not changed."""
     linked = LinkedList('abcdef')
     assert len(linked) == 6
-    linked.remove('k')
+    with pytest.raises(ValueError):
+        linked.remove('k')
     assert len(linked) == 6
 
 
@@ -409,8 +439,7 @@ def test_traverse():
     list_items = []
     for item in linked.traverse():
         list_items.append(item)
-        assert item in ('a', 'b', 'c')
-    assert len(list_items) == 3
+    assert list_items == ['c', 'b', 'a']
 
 
 def test_traverse_start_node():
@@ -420,8 +449,7 @@ def test_traverse_start_node():
     cnode = linked.search('c')
     for item in linked.traverse(cnode):
         list_items.append(item)
-        assert item in ('a', 'b', 'c')
-    assert len(list_items) == 3
+    assert list_items == ['c', 'b', 'a']
 
 
 def test_traverse_end_node():
@@ -431,8 +459,7 @@ def test_traverse_end_node():
     dnode = linked.search('d')
     for item in linked.traverse(end_node=dnode):
         list_items.append(item)
-        assert item in ('d', 'e', 'f')
-    assert len(list_items) == 3
+    assert list_items == ['f', 'e', 'd']
 
 
 def test_traverse_start_and_end_nodes_same():

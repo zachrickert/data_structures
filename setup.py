@@ -4,8 +4,8 @@ from setuptools import setup
 setup(
     name="data_structures",
     description="Classic data structures.",
-    version='0.1.0',
-    author="Zach Rickert, Jeffery Ray Russell",
+    version='0.1.1',
+    author="Zach Rickert",
     author_email="zachrickert@gmail.com",
     license='MIT',
     py_modules=['linked_list'],
