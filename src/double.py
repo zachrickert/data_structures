@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Modules for the LinkedList Class and a Node Class that makes up the list."""
+"""Modules for the DLL Class and a Node Class that makes up the list."""
 
 
 class Node(object):
@@ -81,6 +81,10 @@ class DLL(object):
         """Allow len to be called on the list."""
         return self.length
 
+    def size(self):
+        """Return number of nodes."""
+        return self.length
+
     def push(self, val):
         """Insert the value ‘val’ at the head of the list."""
         try:
@@ -115,7 +119,7 @@ class DLL(object):
         return val
 
     def shift(self):
-        """Shift the first value off the head of the list and return it."""
+        """Shift the first value off the tail of the list and return it."""
         try:
             val, self.last_node = self.last_node.value, self.last_node.backward
         except AttributeError:
