@@ -30,7 +30,7 @@ class Node(object):
         try:
             if self.pointer.value == val:
                 self.pointer = self.pointer.pointer
-                return self.pointer
+                return self
             else:
                 return self.pointer._remove(val)
         except AttributeError:
@@ -62,6 +62,7 @@ class LinkedList(object):
             # AttributeError if no head set.
             self.head = Node(val)
         self.length += 1
+        return self.head
 
     def pop(self):
         """Pop off the value ‘val’ at the head of the list."""
@@ -92,6 +93,8 @@ class LinkedList(object):
         else:
             if self.head._remove(val):
                 self.length -= 1
+            else:
+                raise ValueError('LinkedList.remove(x): x not in list') 
 
     def traverse(self, start_node=None, end_node=None):
         """
