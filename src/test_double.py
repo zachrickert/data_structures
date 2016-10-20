@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Testing module for the Linked List and Node classes."""
+"""Testing module for the Doubly Linked List and Node classes."""
 
 from double import Node, DLL
 import pytest
@@ -280,15 +280,13 @@ def test_append_last_node_backward_updates():
 
 
 # -------------Linked List Length Tests------------------
-# [] len of new dll is 0.
-# [] push, len of dll in 1.
-# [] append, len of dll in 1.
-# [] push, pop, len of dll in 0.
-# [] push, shift, len of dll in 0.
-# [] append, pop, len of dll in 0.
-# [] append, shift, len of dll in 0.
-# [] pop, len of dll in 0.
-# [] append, len of dll in 0.
+# [x] len of new dll is 0.
+# [x] push, len of dll is 1.
+# [x] append, len of dll is 1.
+# [x] push, pop, len of dll is 0.
+# [] append, shift, len of dll is 0.
+# [x] pop, len of dll is 0.
+# [x] shift, len of dll is 0.
 
 def test_len_empty_linked_list():
     """Len of new dll is 0."""
@@ -310,20 +308,36 @@ def test_len_after_append():
     assert(len(dll) is 1)
 
 
-# def test_len_after_pop():
-#     """Test if len of a new string is 0."""
-#     dll = DLL()
-#     dll.push(1)
-#     dll.pop()
-#     assert(len(dll) is 0)
+def test_len_after_pop():
+    """Test if len of a new string is 0."""
+    dll = DLL()
+    dll.push(1)
+    dll.pop()
+    assert(len(dll) is 0)
 
 
-# def test_len_is_0_after_index_error():
-#     """Test if len of a new string is 0."""
-#     dll = DLL()
-#     with pytest.raises(IndexError):
-#         dll.pop()
-#     assert(len(dll) is 0)
+def test_len_after_shift():
+    """Test if len of a new string is 0."""
+    dll = DLL()
+    dll.push(1)
+    dll.shift()
+    assert(len(dll) is 0)
+
+
+def test_len_is_0_after_index_error_pop():
+    """Test if len of a new string is 0."""
+    dll = DLL()
+    with pytest.raises(IndexError):
+        dll.pop()
+    assert(len(dll) is 0)
+
+
+def test_len_is_0_after_index_error_shift():
+    """Test if len of a new string is 0."""
+    dll = DLL()
+    with pytest.raises(IndexError):
+        dll.shift()
+    assert(len(dll) is 0)
 
 
 # -------DLL Initialization Tests by itterable------------
@@ -405,7 +419,7 @@ def test_initialization_with_non_itterable():
         dll = DLL(2)
 
 
-# -------------DLL Pop Tests------------------
+# -------------Pop Method Tests------------------
 # [x] push(val), pop - will return val.
 # [x] append(val), pop - will return val.
 # [x] push(val), pop - first node will be None.
@@ -469,7 +483,7 @@ def test_pop_raises_index_error_after_push():
         dll.pop()
 
 
-# -------------DLL Shift Tests------------------
+# -------------Shift Method Tests------------------
 # remove the last value from the tail of the list and return it. 
 # [x] append(val), shift - will return val.
 # [x] push(val), shift - will return val.
@@ -534,7 +548,7 @@ def test_shift_raises_index_error_after_append():
         dll.shift()
 
 
-# -------------DLL Search Tests------------------
+# -------------Search Method Tests------------------
 # search(val) - will return the node containing ‘val’ in the list, if present, else None.
 # [x] search empty list, return none.
 # [x] search list with one node, returns a node.
@@ -575,7 +589,7 @@ def test_search_multi_node_list_returns_none():
     assert dll.search('g') is None
 
 
-# -------------Linked List Remove Tests------------------
+# ------------- Remove Method Tests------------------
 #  remove(val) - will remove the given node from the list,
 # wherever it might be (node must be an item in the list).
 # [x] remove a single node from a list.
@@ -628,7 +642,7 @@ def test_remove_node_not_in_list_raise_error():
         dll.remove('k')
 
 
-# -------------DLL Traverse Tests------------------
+# -------------Traverse Method Tests------------------
 #  traverse(node) - will traverse through the list.
 # [x] traverse forward through a list.
 # [x] traverse backwards through a list.
@@ -661,7 +675,7 @@ def test_traverse_empty_list():
     assert list_items == []
 
 
-# -------------DLL Insert Tests------------------
+# -------------Insert Method Tests------------------
 # [x] insert_after, check prev node forward pointer.
 # [x] insert_after, check new node backward pointer.
 # [x] insert_after, after last node. Check last node.
@@ -692,6 +706,7 @@ def test_insert_after_last_node():
     enode = dll.insert_after('e', dnode)
     assert dll.last_node is enode
 
+
 def test_insert_before_check_next_backward():
     """Insert_before, check next node backward pointer."""
     dll = DLL('abcd')
@@ -715,3 +730,64 @@ def test_insert_before_first_node():
     enode = dll.insert_before('e', anode)
     assert dll.first_node is enode
 
+
+# -------------Size Method Tests------------------
+# [x] size of new dll is 0.
+# [x] push, size of dll is 1.
+# [x] append, size of dll is 1.
+# [x] push, pop, size of dll is 0.
+# [] append, shift, size of dll is 0.
+# [x] pop, size of dll is 0.
+# [x] shift, size of dll is 0.
+
+
+def test_size_empty_linked_list():
+    """Size of new dll is 0."""
+    dll = DLL()
+    assert(dll.size() is 0)
+
+
+def test_size_after_push():
+    """Push, size of dll in 1."""
+    dll = DLL()
+    dll.push(1)
+    assert(dll.size() is 1)
+
+
+def test_size_after_append():
+    """Append, size of dll in 1."""
+    dll = DLL()
+    dll.append(1)
+    assert(dll.size() is 1)
+
+
+def test_size_after_pop():
+    """Test if size of a new string is 0."""
+    dll = DLL()
+    dll.push(1)
+    dll.pop()
+    assert(dll.size() is 0)
+
+
+def test_size_after_shift():
+    """Test if size of a new string is 0."""
+    dll = DLL()
+    dll.push(1)
+    dll.shift()
+    assert(dll.size() is 0)
+
+
+def test_size_is_0_after_index_error_pop():
+    """Test if size of a new string is 0."""
+    dll = DLL()
+    with pytest.raises(IndexError):
+        dll.pop()
+    assert(dll.size() is 0)
+
+
+def test_size_is_0_after_index_error_shift():
+    """Test if size of a new string is 0."""
+    dll = DLL()
+    with pytest.raises(IndexError):
+        dll.shift()
+    assert(dll.size() is 0)

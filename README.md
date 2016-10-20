@@ -3,6 +3,7 @@ Repository for common data structures
 
 ## Singly Linked List
 In computer science, a linked list is a linear collection of data elements, called nodes, each pointing to the next node by means of a pointer. 
+
 [Linked list](https://en.wikipedia.org/wiki/Linked_list)
 This linked list will include the following operations:
 * push(val) - will insert the value ‘val’ at the head of the list
@@ -21,6 +22,7 @@ This linked list will include the following operations:
 
 ## Doubly Linked List
 In computer science, a doubly linked list is a linked data structure that consists of a set of sequentially linked records called nodes. Each node contains two fields, called links, that are references to the previous and to the next node in the sequence of nodes. The beginning and ending nodes' previous and next links, respectively, point to some kind of terminator, typically a sentinel node or null, to facilitate traversal of the list. 
+
 [Doubly Linked list](https://en.wikipedia.org/wiki/Doubly_linked_list)
 This doubly linked list will have these operations:
 * push(val) will insert the value ‘val’ at the head of the list
@@ -34,3 +36,15 @@ This doubly linked list will have these operations:
 * traverse_forward() - Traverse from the first node going forward through the list.
 * traverse_backward() - Traverse from the last node going reverse through the list.
 * insert_after(val, node) - Insert a node after a given node.
+* insert_before(val, node) - Insert a node before a given node.
+
+##Queue
+In computer science, a queue is a particular kind of abstract data type or collection in which the entities in the collection are kept in order and the principal (or only) operations on the collection are the addition of entities to the rear terminal position, known as enqueue, and removal of entities from the front terminal position, known as dequeue. 
+
+[Queue](https://en.wikipedia.org/wiki/Queue_(abstract_data_type))
+This queue will have the following operations:
+* enqueue(value): adds value to the queue
+* dequeue(): removes the correct item from the queue and returns its value (should raise an error if the queue is empty)
+* peek(): returns the next value in the queue without dequeueing it. If the queue is empty, returns None
+* size(): return the size of the queue. Should return 0 if the queue is empty.
+
