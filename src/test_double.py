@@ -621,15 +621,7 @@ def test_remove_only_node_in_list():
     assert dll.last_node is None
 
 
-def test_remove_only_node_in_list():
-    """Remove the only node in the list."""
-    dll = DLL('a')
-    dll.remove('a')
-    assert dll.first_node is None
-    assert dll.last_node is None
-
-
-def test_remove_node_from_last_node():
+def test_remove_node_not_in_list_raise_error():
     """Remove a node not in the list."""
     dll = DLL('abcdef')
     with pytest.raises(ValueError):
