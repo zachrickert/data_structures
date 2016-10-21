@@ -13,7 +13,7 @@ def test_stack_initalization():
     stack = Stack()
     assert isinstance(stack, Stack)
 
-# ------------------Enstack Method Tests--------------------
+# ------------------Push Method Tests--------------------
 # [] push(val), check first_node = val
 # [] push(val),push(val2), check first_node = val2
 # [] push(val), push(val2) check last_node = val1.
@@ -25,7 +25,7 @@ def test_push_val():
     assert stack._stack.first_node is anode
 
 
-def test_push_enstack_check_first_node_val():
+def test_push_push_check_first_node_val():
     """push(val), push(val2) check first_node = val2."""
     stack = Stack()
     anode = stack.push('a')
@@ -33,7 +33,7 @@ def test_push_enstack_check_first_node_val():
     assert stack._stack.first_node is bnode
 
 
-def test_push_enstack_check_last_node_val():
+def test_push_push_check_last_node_val():
     """push(val), push(val2) check last_node = val1."""
     stack = Stack()
     anode = stack.push('a')
@@ -87,14 +87,14 @@ def test_initialization_with_two_items_last_node_val():
 
 
 def test_pop_returns_value():
-    """push(val), pop = val."""
+    """Push(val), pop = val."""
     stack = Stack()
     stack.push('a')
     assert stack.pop() is 'a'
 
 
 def test_pop_removes_value():
-    """push(val), pop = val, mode is removed(last_node is None)."""
+    """Push(val), pop = val, mode is removed(last_node is None)."""
     stack = Stack()
     stack.push('a')
     stack.pop()
@@ -103,27 +103,27 @@ def test_pop_removes_value():
 
 
 def test_values_pop_in_correct_order():
-    """push(val),push(val2), pop = val2."""
+    """Push(val),push(val2), pop = val2."""
     stack = Stack('ab')
     assert stack.pop() == 'b'
 
 
 def test_values_pop_two_values_in_correct_order():
-    """push(val),push(val2), pop = val2, pop = val."""
+    """Push(val),push(val2), pop = val2, pop = val."""
     stack = Stack('ab')
     assert stack.pop() == 'b'
     assert stack.pop() == 'a'
 
 
 def test_pop_empty_list_raises_error():
-    """Dstack raises error."""
+    """Pop raises error."""
     stack = Stack()
     with pytest.raises(IndexError):
         stack.pop()
 
 
 def test_stack_pop_pop_raises_error():
-    """push(val), pop = val, pop raises error."""
+    """Push(val), pop = val, pop raises error."""
     stack = Stack('a')
     stack.pop()
     with pytest.raises(IndexError):
@@ -165,9 +165,9 @@ def test_peak_empty_stack_returns_none():
 
 # -------------Size Method Tests------------------
 # [] size of new stack is 0.
-# [] enstack, size is 1.
-# [] enstack, pop size is 0.
-# [] enstack, peak size is 1.
+# [] push, size is 1.
+# [] push, pop size is 0.
+# [] push, peak size is 1.
 # [] dequeu, size of dll is 0.
 
 
@@ -178,14 +178,14 @@ def test_size_of_new_stack():
 
 
 def test_size_increments_with_push():
-    """Enstack, size is 1."""
+    """Push, size is 1."""
     stack = Stack()
     stack.push('val')
     assert stack.size() == 1
 
 
 def test_size_decrements_with_pop():
-    """Enstack, pop size is 0."""
+    """Push, pop size is 0."""
     stack = Stack()
     stack.push('val')
     assert stack.size() == 1
@@ -194,7 +194,7 @@ def test_size_decrements_with_pop():
 
 
 def test_size_stays_same_with_peak():
-    """Enstack, peak size is 1."""
+    """Push, peak size is 1."""
     stack = Stack()
     stack.push('val')
     assert stack.size() == 1
@@ -203,7 +203,7 @@ def test_size_stays_same_with_peak():
 
 
 def test_size_stays_with_pop_error():
-    """Dequeu, size of dll is 0."""
+    """pop, size of stack is 0."""
     stack = Stack()
     with pytest.raises(IndexError):
         stack.pop()
