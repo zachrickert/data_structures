@@ -71,6 +71,7 @@ In computer science, a heap is a specialized tree-based data structure that sati
 
 This heap will have the following operation:
 * Initialization - at the time of heap initialization will be either a min heap or max heap.
+* insert('val') - adds a new item to the heap.
 * peak() - returns the head node, either the min or max.
 * insert('val') - adds a new item to the heap.
 * extract() - removes head node and returns the value.
