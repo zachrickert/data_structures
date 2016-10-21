@@ -66,3 +66,13 @@ This deque will have the following operstions:
 * peak_left(): returns the first value in the deque without removing it. If the stack is empty, returns None
 * size(): return the size of the deque. Should return 0 if the deque is empty.
 
+##[Heap](https://en.wikipedia.org/wiki/Heap_(data_structure))
+In computer science, a heap is a specialized tree-based data structure that satisfies the heap property: If A is a parent node of B then the key (the value) of node A is ordered with respect to the key of node B with the same ordering applying across the heap. A heap can be classified further as either a "max heap" or a "min heap". In a max heap, the keys of parent nodes are always greater than or equal to those of the children and the highest key is in the root node. In a min heap, the keys of parent nodes are less than or equal to those of the children and the lowest key is in the root node.
+
+This heap will have the following operation:
+* Initialization - at the time of heap initialization will be either a min heap or max heap.
+* insert('val') - adds a new item to the heap.
+* peak() - returns the head node, either the min or max.
+* insert('val') - adds a new item to the heap.
+* extract() - removes head node and returns the value.
+* delete() - removes the head node.
