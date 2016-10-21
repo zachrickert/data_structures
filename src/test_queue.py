@@ -6,7 +6,7 @@ import pytest
 
 
 # ------------------Queue Initialization Tests--------------------
-# [] test default initialization.
+# [x] test default initialization.
 
 def test_queue_initalization():
     """Test default initialization."""
@@ -16,7 +16,7 @@ def test_queue_initalization():
 # ------------------Enqueue Method Tests--------------------
 # [x] enqueue(val), check first_node = val
 # [x] enqueue(val),enqueue(val2), check first_node = val1
-# [] enqueue(val), enqueue(val2) check last_node = val2.
+# [x] enqueue(val), enqueue(val2) check last_node = val2.
 
 def test_enquque_val():
     """Enqueue(val), check first_node = val."""
@@ -134,7 +134,7 @@ def test_queue_dequeue_dequeue_raises_error():
 # [x] enqueue(val), peak = val
 # [x] enqueue(val), peak = val, node not removed(last_node is val)
 # [x] enqueue(val),enqueue(val2), peak = val
-# [] peak empty returns none
+# [x] peak empty returns none
 
 def test_peak_returns_value():
     """Enqueue(val), peak = val."""
