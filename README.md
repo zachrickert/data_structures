@@ -48,3 +48,13 @@ This queue will have the following operations:
 * peek(): returns the next value in the queue without dequeueing it. If the queue is empty, returns None
 * size(): return the size of the queue. Should return 0 if the queue is empty.
 
+##Stack
+In computer science, a stack is an abstract data type that serves as a collection of elements, with two principal operations: push, which adds an element to the collection, and pop, which removes the most recently added element that was not yet removed. The order in which elements come off a stack gives rise to its alternative name, LIFO (for last in, first out). Additionally, a peek operation may give access to the top without modifying the stack.
+
+[Stack](https://en.wikipedia.org/wiki/Stack_(abstract_data_type))
+This stack will have the following operations:
+* push(value): adds value to the stack
+* pop(): removes the correct item from the queue and returns its value (should raise an error if the stack is empty)
+* peek(): returns the first value in the stack without qoq it. If the stack is empty, returns None
+* size(): return the size of the stack. Should return 0 if the stack is empty.
+
