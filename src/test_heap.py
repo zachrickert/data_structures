@@ -270,7 +270,7 @@ def test_extract_decrements_size_of_heap():
 def test_overall_heap_function():
     """Add values to heap, extract values. Chek all in order."""
     heap = Heap()
-    spots = 32
+    spots = 64
     sample_list = random.sample(range(100), spots)
     for item in sample_list:
         heap.insert(item)
@@ -284,7 +284,7 @@ def test_overall_heap_function():
 def test_overall_minheap_function():
     """Add values to minheap, extract values. Chek all in order."""
     heap = Heap('min')
-    spots = 32
+    spots = 64
     sample_list = random.sample(range(100), spots)
     for item in sample_list:
         heap.insert(item)
