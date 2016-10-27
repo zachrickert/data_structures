@@ -76,3 +76,10 @@ This heap will have the following operation:
 * insert('val') - adds a new item to the heap.
 * extract() - removes head node and returns the value.
 * delete() - removes the head node.
+
+##[Priorty Queue](https://en.wikipedia.org/wiki/Priority_queue)
+In computer science, a priority queue is an abstract data type which is like a regular queue or stack data structure, but where additionally each element has a "priority" associated with it. In a priority queue, an element with high priority is served before an element with low priority. 
+This priorty queue things with a higher priorty will be popped first.  The default priorty is 0.  Positive numbers reprsent things with greater importance.  Negative numbers would be lower than default priorty.
+* insert(item, priorty): inserts an item into the queue with given priorty.
+* pop(): removes the most important item from the queue.
+* peek(): returns the most important item without removing it from the queue.

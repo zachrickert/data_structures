@@ -264,13 +264,13 @@ def test_extract_decrements_size_of_heap():
 
 # ------------------Overall Tests--------------------
 # [x] Add values to heap, extract values. Chek all in order.
-# [] Add values to minheap, extract values. Chek all in order.
+# [x] Add values to minheap, extract values. Chek all in order.
 
 
 def test_overall_heap_function():
     """Add values to heap, extract values. Chek all in order."""
     heap = Heap()
-    spots = 32
+    spots = 64
     sample_list = random.sample(range(100), spots)
     for item in sample_list:
         heap.insert(item)
@@ -284,7 +284,7 @@ def test_overall_heap_function():
 def test_overall_minheap_function():
     """Add values to minheap, extract values. Chek all in order."""
     heap = Heap('min')
-    spots = 32
+    spots = 64
     sample_list = random.sample(range(100), spots)
     for item in sample_list:
         heap.insert(item)
@@ -293,4 +293,26 @@ def test_overall_minheap_function():
         new_item = heap.extract()
         assert new_item >= last_item
         last_item = new_item
+
+
+# ------------------Helper Function Tests--------------------
+# [x] Int, float, boolean, string types unaffected.
+# [x] List and tuples return first value.
+
+def test_helper_unchanged_types():
+    from heap import _get_first_item
+
+    data_types = [-25, 3.14, True, 'abcdef']
+    for item in data_types:
+        assert _get_first_item(item) == item
+
+
+def test_helper_list_and_tuples():
+    from heap import _get_first_item
+
+    data_types = [(2, 5), [7, 4]]
+    for item in data_types:
+        assert _get_first_item(item) == item[0]
+
+
 

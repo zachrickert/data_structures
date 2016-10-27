@@ -1,10 +1,12 @@
 # -*- coding: utf-8 -*-
 """Testing module for the Heap classes."""
 
+
 class Heap(object):
-    """Heap class implementation"""
+    """Heap class implementation."""
+
     def __init__(self, min_max='max'):
-        """Initialize Heap"""
+        """Initialize Heap."""
         self._heap = []
         self.size = 0
         heap_types = ['max', 'min']
@@ -72,63 +74,63 @@ class Heap(object):
         child2 = (2 * idx) + 2
 
         try:
-            value1 = self._heap[child1]
+            value1 = _get_first_item(self._heap[child1])
         except IndexError:
             return idx
         try:
-            value2 = self._heap[child2]
+            value2 = _get_first_item(self._heap[child2])
         except IndexError:
-            value2 = float("-inf")
+            value2 = float('-inf')
+
+        value_idx = _get_first_item(self._heap[idx])
 
         if value1 >= value2:
-            if value1 > self._heap[idx]:
+            if value1 > value_idx:
                 self._heap[child1], self._heap[idx] = self._heap[idx], self._heap[child1]
                 return child1
-            elif value2 > self._heap[idx]:
-                self._heap[child2], self._heap[idx] = self._heap[idx], self._heap[child2]
-                return child2
             else:
                 return idx
         else:
-            if value2 > self._heap[idx]:
+            if value2 > value_idx:
                 self._heap[child2], self._heap[idx] = self._heap[idx], self._heap[child2]
                 return child2
-            elif value1 > self._heap[idx]:
-                self._heap[child1], self._heap[idx] = self._heap[idx], self._heap[child1]
-                return child1
             else:
                 return idx
-
-
 
     def _shift_down_min(self, idx):
         child1 = (2 * idx) + 1
         child2 = (2 * idx) + 2
 
         try:
-            value1 = self._heap[child1]
+            value1 = _get_first_item(self._heap[child1])
         except IndexError:
             return idx
         try:
-            value2 = self._heap[child2]
+            value2 = _get_first_item(self._heap[child2])
         except IndexError:
-            value2 = float("inf")
+            value2 = float('inf')
+
+        value_idx = _get_first_item(self._heap[idx])
 
         if value1 <= value2:
-            if value1 < self._heap[idx]:
+            if value1 < value_idx:
                 self._heap[child1], self._heap[idx] = self._heap[idx], self._heap[child1]
                 return child1
-            elif value2 < self._heap[idx]:
-                self._heap[child2], self._heap[idx] = self._heap[idx], self._heap[child2]
-                return child2
             else:
                 return idx
         else:
-            if value2 < self._heap[idx]:
+            if value2 < value_idx:
                 self._heap[child2], self._heap[idx] = self._heap[idx], self._heap[child2]
                 return child2
-            elif value1 < self._heap[idx]:
-                self._heap[child1], self._heap[idx] = self._heap[idx], self._heap[child1]
-                return child1
             else:
                 return idx
+
+def _get_first_item(value):
+        """
+        Helper function allows tuples and lists to be ordered.
+        Ordering based on their first value.
+        """
+        if isinstance(value, (list, tuple)):
+            return value[0]
+        else:
+            return value
